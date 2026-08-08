@@ -319,3 +319,7 @@ session) `asc_finalize_sapxam.py`.
 - **Onboarding content review**: the Vietnamese hand-name translations
   (`hand.twoPair`/`hand.threeOfAKind` especially) should get a native-speaker gut-check
   before shipping, per the note above.
+
+## Submitted for review (2026-08-09)
+
+All ASC steps complete: metadata, IAP, screenshots, build (VALID, Distribution-signed), age rating, App Privacy, IAP ticked into version. Submitted via reviewSubmissions API — reused the existing draft submission that already held the IAP (avoided the orphaned-draft trap), attached the version, and confirmed the IAP rode along (moved to WAITING_FOR_REVIEW alongside the version, not left behind). Verified independently via GET: `appStoreState: WAITING_FOR_REVIEW`.
