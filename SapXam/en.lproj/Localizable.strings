@@ -1,0 +1,103 @@
+"home.title" = "Sập Xám";
+"home.subtitle" = "Vietnamese 13-Card Poker — Solo vs. AI";
+"home.players" = "Players";
+"home.difficulty" = "AI Difficulty";
+"home.timer.title" = "Timed Arrangement";
+"home.timer.subtitle" = "Off = untimed practice mode. On = a generous 90-second timer.";
+"home.play" = "Play";
+"home.howtoplay" = "How to Play";
+"home.rules" = "Full Rules";
+"home.upgrade" = "Unlock Hard AI →";
+"home.noStakes" = "Fully offline. No coins, no forced tables, no login — play at your own pace.";
+
+"difficulty.easy" = "Easy";
+"difficulty.normal" = "Normal";
+"difficulty.hard" = "Hard";
+
+"arrange.title" = "Arrange Your Hand";
+"arrange.practice" = "Practice mode — no timer";
+"arrange.back" = "Back";
+"arrange.middle" = "Middle";
+"arrange.front" = "Front";
+"arrange.fouled" = "Fouled — Back must beat Middle must beat Front";
+"arrange.tray" = "Tap a card, then tap a hand to place it";
+"arrange.auto" = "Auto-Arrange";
+"arrange.submit" = "Submit";
+
+"hand.highCard" = "High Card";
+"hand.onePair" = "Pair";
+"hand.twoPair" = "Two Pair";
+"hand.threeOfAKind" = "Three of a Kind";
+"hand.straight" = "Straight";
+"hand.flush" = "Flush";
+"hand.fullHouse" = "Full House";
+"hand.fourOfAKind" = "Four of a Kind";
+"hand.straightFlush" = "Straight Flush";
+
+"game.round" = "Round %d";
+"game.matchOver" = "Match Over";
+"game.done" = "Done";
+"game.endMatch" = "End Match";
+"game.nextRound" = "Next Round";
+
+"results.specialWin" = "%@ — %d× instant win!";
+"results.yourHand" = "Your Hand";
+"results.youFouled" = "You fouled — auto-loss this hand";
+"results.opponentFouled" = "Opponent fouled — auto-win this hand";
+"results.scoop" = "Scoop bonus!";
+"results.matchScores" = "Match Scores";
+
+"special.rongCuon" = "Rồng Cuốn (Same-Suit Dragon)";
+"special.sanhRong" = "Sảnh Rồng (Dragon Straight)";
+"special.lucPheBon" = "Lục Phé Bôn (Six Pairs)";
+"special.baCaiThung" = "Ba Cái Thùng (Three Flushes)";
+"special.baCaiSanh" = "Ba Cái Sảnh (Three Straights)";
+
+"onboarding.next" = "Next";
+"onboarding.begin" = "Let's Play";
+"onboarding.cards" = "cards";
+"onboarding.goal.title" = "Split 13 Into 3";
+"onboarding.goal.body" = "Arrange your 13 cards into three poker hands: Back, Middle, and Front.";
+"onboarding.goal.foul" = "Back must beat Middle, and Middle must beat Front — get the order wrong and you auto-lose all three hands (\"fouling\").";
+"onboarding.special.title" = "Watch for Instant Wins";
+"onboarding.special.body" = "Rarely, your opening 13 cards already form a special hand — you win instantly, before any arranging.";
+"onboarding.special.example" = "13 cards in a row, mixed suits — an automatic %d× win over everyone at the table.";
+"onboarding.special.note" = "Same-suit dragon (Rồng Cuốn) is even rarer and pays more. Full list of every special hand is in Full Rules.";
+"onboarding.scoop.title" = "Win All Three = Scoop";
+"onboarding.scoop.body" = "Beat one opponent on Back, Middle, AND Front, and you get a scoop bonus on top.";
+"onboarding.scoop.win" = "beats opponent";
+"onboarding.scoop.bonusLabel" = "Scoop bonus";
+"onboarding.scoop.totalLabel" = "Total vs. this opponent";
+"onboarding.stakes.title" = "No Pressure, Ever";
+"onboarding.stakes.body" = "Fully offline, solo vs. AI. No coins, no login, no forced high-stakes tables. Turn on the timer only if you want it — practice mode is untimed by default.";
+
+"rules.title" = "Full Rules";
+"rules.done" = "Done";
+"rules.deal.title" = "The Deal";
+"rules.deal.body" = "2-4 players (you + AI). Everyone gets 13 cards from a standard 52-card deck, all at once — no draws, no discards.";
+"rules.arrange.title" = "Arranging Your Hand";
+"rules.arrange.body" = "Split your 13 cards into a Back hand (5 cards), a Middle hand (5 cards), and a Front hand (3 cards).";
+"rules.ranks.title" = "Hand Rankings";
+"rules.ranks.body" = "Back and Middle use standard poker rankings: High Card, Pair, Two Pair, Three of a Kind, Straight, Flush, Full House, Four of a Kind, Straight Flush. Front (3 cards) can only be High Card, Pair, or Three of a Kind — no straights or flushes.";
+"rules.foul.title" = "Fouling";
+"rules.foul.body" = "Back must rank equal to or higher than Middle, and Middle must rank equal to or higher than Front. If not, your hand is \"fouled\" — you automatically lose all three hands against every opponent this round.";
+"rules.special.title" = "Instant Wins (Tới Trắng)";
+"rules.special.body" = "Rồng Cuốn (13-card straight, one suit, 24×) > Sảnh Rồng (13-card straight, mixed suits, 12×) > Lục Phé Bôn (six pairs + 1 card, 6×) > Ba Cái Thùng (three flushes, 3×) > Ba Cái Sảnh (three straights, 3×). Any of these wins the round instantly against every opponent at that multiplier, before arranging.";
+"rules.scoring.title" = "Scoring";
+"rules.scoring.body" = "Your Back, Middle, and Front are each compared against every opponent's corresponding hand: +1 unit per hand won, -1 per hand lost. Win all three against one opponent and you also get a +3 scoop bonus against them.";
+
+"upgrade.title" = "Sập Xám Pro";
+"upgrade.subtitle" = "Unlock the full experience.";
+"upgrade.feature.hardAI" = "Hard AI — deep search, foul-avoidance-first arrangement";
+"upgrade.feature.fairAI" = "Genuinely fair — deterministic AI, never rigged against you";
+"upgrade.feature.unlimited" = "Unlimited matches, no ads, ever";
+"upgrade.owned" = "You own Sập Xám Pro ✓";
+"upgrade.buy" = "Unlock — %@";
+"upgrade.buyFallback" = "Unlock Sập Xám Pro";
+"upgrade.restore" = "Restore Purchases";
+"upgrade.close" = "Not Now";
+
+"player.you" = "You";
+"player.ai1" = "AI 1";
+"player.ai2" = "AI 2";
+"player.ai3" = "AI 3";

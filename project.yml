@@ -1,0 +1,44 @@
+name: SapXam
+options:
+  bundleIdPrefix: com.quyenngo
+  deploymentTarget:
+    iOS: "16.0"
+
+settings:
+  base:
+    DEVELOPMENT_TEAM: SM99L22Q84
+    CODE_SIGN_STYLE: Automatic
+    SWIFT_VERSION: "5.0"
+    TARGETED_DEVICE_FAMILY: "1"
+    IPHONEOS_DEPLOYMENT_TARGET: "16.0"
+    MARKETING_VERSION: "1.0.0"
+    CURRENT_PROJECT_VERSION: "1"
+    INFOPLIST_KEY_ITSAppUsesNonExemptEncryption: NO
+    ENABLE_PREVIEWS: YES
+
+targets:
+  SapXam:
+    type: application
+    platform: iOS
+    sources:
+      - path: SapXam
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.quyenngo.sapxam
+        TARGETED_DEVICE_FAMILY: "1"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown"
+        INFOPLIST_KEY_CFBundleDisplayName: "Sập Xám"
+        GENERATE_INFOPLIST_FILE: YES
+        MARKETING_VERSION: "1.0.0"
+        CURRENT_PROJECT_VERSION: "1"
+    info:
+      path: Info.plist
+      properties:
+        UILaunchScreen: {}
+        CFBundleDisplayName: "Sập Xám"
+        ITSAppUsesNonExemptEncryption: false
+        CFBundleLocalizations: [en, vi]
+        CFBundleDevelopmentRegion: en

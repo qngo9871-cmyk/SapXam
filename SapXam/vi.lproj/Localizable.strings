@@ -1,0 +1,103 @@
+"home.title" = "Sập Xám";
+"home.subtitle" = "Bài 13 Lá Việt Nam — Chơi Một Mình Với AI";
+"home.players" = "Số Người Chơi";
+"home.difficulty" = "Độ Khó AI";
+"home.timer.title" = "Giới Hạn Thời Gian";
+"home.timer.subtitle" = "Tắt = chế độ luyện tập không giới hạn giờ. Bật = đồng hồ 90 giây thoải mái.";
+"home.play" = "Chơi";
+"home.howtoplay" = "Hướng Dẫn";
+"home.rules" = "Luật Đầy Đủ";
+"home.upgrade" = "Mở khóa AI Khó →";
+"home.noStakes" = "Hoàn toàn ngoại tuyến. Không xu, không bàn cược ép buộc, không cần đăng nhập — chơi theo nhịp độ của bạn.";
+
+"difficulty.easy" = "Dễ";
+"difficulty.normal" = "Vừa";
+"difficulty.hard" = "Khó";
+
+"arrange.title" = "Xếp Bài Của Bạn";
+"arrange.practice" = "Chế độ luyện tập — không giới hạn giờ";
+"arrange.back" = "Chi Sau";
+"arrange.middle" = "Chi Giữa";
+"arrange.front" = "Chi Trước";
+"arrange.fouled" = "Bể chi — Chi Sau phải mạnh hơn Chi Giữa, Chi Giữa phải mạnh hơn Chi Trước";
+"arrange.tray" = "Chạm một lá bài, rồi chạm vào chi muốn xếp";
+"arrange.auto" = "Tự Động Xếp";
+"arrange.submit" = "Xác Nhận";
+
+"hand.highCard" = "Mậu Thầu";
+"hand.onePair" = "Đôi";
+"hand.twoPair" = "Thú (Hai Đôi)";
+"hand.threeOfAKind" = "Sám Chi (Bộ Ba)";
+"hand.straight" = "Sảnh";
+"hand.flush" = "Thùng";
+"hand.fullHouse" = "Cù Lũ";
+"hand.fourOfAKind" = "Tứ Quý";
+"hand.straightFlush" = "Thùng Phá Sảnh";
+
+"game.round" = "Ván %d";
+"game.matchOver" = "Kết Thúc Trận";
+"game.done" = "Xong";
+"game.endMatch" = "Kết Thúc Trận";
+"game.nextRound" = "Ván Tiếp Theo";
+
+"results.specialWin" = "%@ — thắng ngay gấp %d lần!";
+"results.yourHand" = "Bài Của Bạn";
+"results.youFouled" = "Bạn bị bể chi — tự động thua ván này";
+"results.opponentFouled" = "Đối thủ bị bể chi — bạn tự động thắng";
+"results.scoop" = "Thưởng thắng trọn cả 3 chi!";
+"results.matchScores" = "Điểm Trận Đấu";
+
+"special.rongCuon" = "Rồng Cuốn (Sảnh Đồng Chất)";
+"special.sanhRong" = "Sảnh Rồng (Sảnh 13 Lá)";
+"special.lucPheBon" = "Lục Phé Bôn (Sáu Đôi)";
+"special.baCaiThung" = "Ba Cái Thùng";
+"special.baCaiSanh" = "Ba Cái Sảnh";
+
+"onboarding.next" = "Tiếp";
+"onboarding.begin" = "Chơi Thôi";
+"onboarding.cards" = "lá";
+"onboarding.goal.title" = "Chia 13 Lá Thành 3 Chi";
+"onboarding.goal.body" = "Xếp 13 lá bài của bạn thành ba chi bài: Chi Sau, Chi Giữa và Chi Trước.";
+"onboarding.goal.foul" = "Chi Sau phải mạnh hơn Chi Giữa, và Chi Giữa phải mạnh hơn Chi Trước — xếp sai thứ tự sẽ bị bể chi và tự động thua cả ba chi.";
+"onboarding.special.title" = "Coi Chừng Thắng Ngay";
+"onboarding.special.body" = "Đôi khi 13 lá bài chia được ngay đã tạo thành bài đặc biệt — bạn thắng ngay lập tức, không cần xếp bài.";
+"onboarding.special.example" = "13 lá bài liên tiếp, khác chất — tự động thắng gấp %d lần với tất cả mọi người.";
+"onboarding.special.note" = "Rồng Cuốn (cùng một chất) hiếm hơn và trả thưởng cao hơn. Xem đầy đủ các bài đặc biệt trong Luật Đầy Đủ.";
+"onboarding.scoop.title" = "Thắng Cả Ba = Thưởng Thêm";
+"onboarding.scoop.body" = "Thắng một đối thủ ở cả Chi Sau, Chi Giữa VÀ Chi Trước, bạn sẽ được cộng thêm điểm thưởng.";
+"onboarding.scoop.win" = "thắng đối thủ";
+"onboarding.scoop.bonusLabel" = "Điểm thưởng";
+"onboarding.scoop.totalLabel" = "Tổng điểm với đối thủ này";
+"onboarding.stakes.title" = "Không Áp Lực";
+"onboarding.stakes.body" = "Chơi hoàn toàn ngoại tuyến, một mình với AI. Không xu, không đăng nhập, không bị ép vào bàn cược cao. Chỉ bật đồng hồ nếu bạn muốn — mặc định là chế độ luyện tập không giới hạn giờ.";
+
+"rules.title" = "Luật Đầy Đủ";
+"rules.done" = "Xong";
+"rules.deal.title" = "Chia Bài";
+"rules.deal.body" = "2-4 người chơi (bạn + AI). Mỗi người được chia 13 lá từ bộ bài 52 lá tiêu chuẩn, chia một lần — không rút thêm, không bỏ bài.";
+"rules.arrange.title" = "Xếp Bài";
+"rules.arrange.body" = "Chia 13 lá bài thành Chi Sau (5 lá), Chi Giữa (5 lá), và Chi Trước (3 lá).";
+"rules.ranks.title" = "Thứ Hạng Bài";
+"rules.ranks.body" = "Chi Sau và Chi Giữa dùng thứ hạng poker tiêu chuẩn: Mậu Thầu, Đôi, Thú, Sám Chi, Sảnh, Thùng, Cù Lũ, Tứ Quý, Thùng Phá Sảnh. Chi Trước (3 lá) chỉ có thể là Mậu Thầu, Đôi, hoặc Sám Chi — không có sảnh hay thùng.";
+"rules.foul.title" = "Bể Chi";
+"rules.foul.body" = "Chi Sau phải bằng hoặc mạnh hơn Chi Giữa, và Chi Giữa phải bằng hoặc mạnh hơn Chi Trước. Nếu không, bài của bạn bị \"bể chi\" — tự động thua cả ba chi trước mọi đối thủ trong ván đó.";
+"rules.special.title" = "Thắng Ngay (Tới Trắng)";
+"rules.special.body" = "Rồng Cuốn (sảnh 13 lá cùng chất, x24) > Sảnh Rồng (sảnh 13 lá khác chất, x12) > Lục Phé Bôn (sáu đôi + 1 lá lẻ, x6) > Ba Cái Thùng (cả ba chi đều là thùng, x3) > Ba Cái Sảnh (cả ba chi đều là sảnh, x3). Có một trong các bài này sẽ thắng ngay tất cả đối thủ với hệ số tương ứng, không cần xếp bài.";
+"rules.scoring.title" = "Tính Điểm";
+"rules.scoring.body" = "Chi Sau, Chi Giữa và Chi Trước của bạn được so với chi tương ứng của từng đối thủ: +1 điểm mỗi chi thắng, -1 mỗi chi thua. Thắng cả ba chi trước một đối thủ, bạn được cộng thêm +3 điểm thưởng với đối thủ đó.";
+
+"upgrade.title" = "Sập Xám Pro";
+"upgrade.subtitle" = "Mở khóa trải nghiệm đầy đủ.";
+"upgrade.feature.hardAI" = "AI Khó — tìm kiếm sâu, ưu tiên tránh bể chi";
+"upgrade.feature.fairAI" = "Công bằng thực sự — AI tất định, không bao giờ thiên vị";
+"upgrade.feature.unlimited" = "Chơi không giới hạn, không quảng cáo";
+"upgrade.owned" = "Bạn đã sở hữu Sập Xám Pro ✓";
+"upgrade.buy" = "Mở Khóa — %@";
+"upgrade.buyFallback" = "Mở Khóa Sập Xám Pro";
+"upgrade.restore" = "Khôi Phục Giao Dịch";
+"upgrade.close" = "Để Sau";
+
+"player.you" = "Bạn";
+"player.ai1" = "AI 1";
+"player.ai2" = "AI 2";
+"player.ai3" = "AI 3";
