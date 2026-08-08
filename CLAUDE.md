@@ -7,12 +7,10 @@ structure) but **all game logic is net-new** — this is a poker-hand-arrangemen
 shedding game like Sâm Lốc, and shares no gameplay code with it. Bundle
 `com.quyenngo.sapxam`. Built 2026-08-08.
 
-**Status: 🟡 Submission prep complete except for one unavoidable manual step. Legal site
-live, icon verified wired-in, App Store screenshots captured in EN+VI and reviewed
-image-by-image (found and fixed 3 real bugs along the way — see below), metadata drafted,
-bundle ID registered via API. Blocked on: a human creating the "Sập Xám" app record in the
-App Store Connect web UI — `POST /v1/apps` always 403s for first-time app records, this is
-Apple's documented restriction, not a bug to work around. See "What's left" below.**
+**Status: 🟢 App record created, full ASC metadata + IAP + pricing + screenshots pushed and
+verified live (2026-08-08). Blocked only on: uploading the real build, ticking the IAP into
+the version (web UI only), the App Privacy nutrition label, and actual submission — all
+human/web-UI steps. See "Live in ASC now" below for exact verified values.**
 
 ## What this is
 
@@ -254,25 +252,60 @@ Baked into product decisions AND onboarding/UI copy, not just claimed in App Sto
 - **Repo**: pushed to `github.com/qngo9871-cmyk/SapXam` (public, matching the rest of this
   portfolio's convention).
 
-## The one hard blocker — human action required
+## Live in App Store Connect now (2026-08-08, all values GET-verified after push)
 
-**A human must create the "Sập Xám" app record by hand in the App Store Connect web UI.**
-`POST /v1/apps` always returns 403 for first-time app records — this is Apple's own API
-restriction (README gotcha #1), not something to script around. Steps:
+App record created by hand in the ASC web UI: **"Sập Xám: 13-Card Poker"**, app id
+`6799384925`, bundle `com.quyenngo.sapxam`, version **1.0** (id
+`fbcdf4af-a73d-4984-8e30-d069f6706829`, state `PREPARE_FOR_SUBMISSION`). Pushed via
+`~/asc-tools/asc_push_sapxam.py`, `asc_push_sapxam_screenshots.py`,
+`asc_push_sapxam_review.py`, `asc_upload_sapxam_iap_screenshot.py`, and (earlier this
+session) `asc_finalize_sapxam.py`.
 
-1. In ASC → My Apps → "+" → New App.
-2. Bundle ID: `com.quyenngo.sapxam` (already registered, will appear in the dropdown).
-3. Name: "Sập Xám" (or the App Store title in `asc_metadata_draft.md` if that's preferred
-   for search — `Sập Xám: 13-Card Poker`). SKU: `sapxam-2026`. Primary language: English (US).
+- **Copyright + age rating** (via `asc_finalize_sapxam.py`, done before this push):
+  `2026 Quyen Ngo`; age rating declaration all `NONE`/`false` → 4+, confirmed via
+  `GET /appInfos/{id}/ageRatingDeclaration`.
+- **Subtitle** (`appInfoLocalizations`): en-US `"Vietnamese Poker vs. AI"` (24 chars), vi
+  `"Mậu Binh 13 Lá Việt Nam"` (23 chars). App name per locale: en-US `Sập Xám: 13-Card
+  Poker`, vi `Sập Xám: Mậu Binh`.
+- **Category**: primary `GAMES`, subcategory `GAMES_CARD` (Games → Card), confirmed via
+  `GET /appInfos/{id}?include=primaryCategory,primarySubcategoryOne`.
+- **Keywords/description/promo text** (`appStoreVersionLocalizations`): pushed for en-US
+  and vi, full text from `asc_metadata_draft.md`. `whatsNew` deliberately left unset on
+  both (first-version STATE_ERROR gotcha).
+- **URLs**, verified live via `curl` before pushing: support
+  `https://qngo9871-cmyk.github.io/sapxam-legal/support.html` (200), privacy
+  `https://qngo9871-cmyk.github.io/sapxam-legal/privacy.html` (200), marketing
+  `https://qngo9871-cmyk.github.io/sapxam-legal/` (200). (Draft had guessed
+  `privacy-policy.html`, which 404s — the real file is `privacy.html`, corrected before
+  pushing.)
+- **Pricing**: app base price Free (Tier 0) via `POST /v1/appPriceSchedules`, confirmed
+  `customerPrice: 0.0` on the resulting `appPrices` resource.
+- **IAP**: `com.quyenngo.sapxam.pro` (non-consumable), created via `POST /v2/inAppPurchases`
+  — **verified byte-for-byte against `PurchaseManager.swift:14`'s `productID` string before
+  creating**, exact match confirmed. IAP id `6799402934`, state `MISSING_METADATA` (normal
+  pre-tick-in, not a bug). Localizations: en-US name "Sập Xám Pro" / desc "Unlock Hard AI,
+  card backs, unlimited play" (42 chars), vi name "Sập Xám Pro" / desc "Mở khóa AI Khó, mẫu
+  bài, chơi không giới hạn" (44 chars) — both under the 55-char IAP description cap. Price
+  $2.99 USD, confirmed via `inAppPurchasePriceSchedules` → price point customerPrice
+  `"2.99"`. IAP review screenshot uploaded (`screenshots/final/en/05-upgrade.png`,
+  1320×2868, checksum-verified).
+- **Screenshots**: 5 per locale × 2 locales (en-US, vi) uploaded to display type
+  `APP_IPHONE_67` (1320×2868, the 6.9" bucket), all confirmed `assetDeliveryState: COMPLETE`
+  via GET — `01-home, 02-arrange, 03-results, 04-special, 05-upgrade`, same order both
+  locales.
+- **App Review Information**: contact Quyen Ngo, `qngo9871@gmail.com`, phone
+  `+61425409937`, `demoAccountRequired: false`, notes explaining gameplay, the non-gambling
+  distinction, the Hard-AI paywall location, and the bilingual UI switch.
 
-Once that exists, follow the same pattern as every other app in this portfolio:
-`asc_push_sapxam.py` (metadata + IAP + localizations, still needs to be written — clone
-`asc_push_phomtala.py` or similar) → screenshots upload → review info/age rating → archive/
-export/upload the real build → attach build to version → **tick the IAP into the version's
-own submission from the app version page** (not the IAP's own page — see the portfolio-wide
-`FIRST_NON_CONSUMABLE_MUST_BE_SUBMITTED_ON_VERSION` gotcha) → submit.
+## Deferred to a human — do NOT script around these
 
-## Still open after the app record exists (not started)
+- **Tick the Pro IAP into version 1.0's own review submission**, from the *version* page in
+  the ASC web UI (not the IAP's own page — orphaned-draft trap, portfolio gotcha #10).
+- **App Privacy nutrition label** (Data Not Collected — app is fully offline, no accounts).
+- **Upload the real build** (archive/export/`altool`) and attach it to version 1.0.
+- **Create/submit the `reviewSubmission`** — not touched by any script in this pass.
+
+## Still open (not started)
 
 - **Real-device testing**: only tested in Simulator so far, and this project has no
   `.storekit` configuration file — the StoreKit purchase flow in particular should be
