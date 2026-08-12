@@ -14,7 +14,10 @@ final class LocalizationManager: ObservableObject {
     static let shared = LocalizationManager()
 
     @Published var language: AppLanguage {
-        didSet { UserDefaults.standard.set(language.rawValue, forKey: "app_language") }
+        didSet {
+            UserDefaults.standard.set(language.rawValue, forKey: "app_language")
+            bundle = Self.bundle(for: language)
+        }
     }
 
     private var bundle: Bundle = .main
@@ -39,7 +42,6 @@ final class LocalizationManager: ObservableObject {
 
     func setLanguage(_ lang: AppLanguage) {
         language = lang
-        bundle = Self.bundle(for: lang)
     }
 
     func string(_ key: String) -> String {

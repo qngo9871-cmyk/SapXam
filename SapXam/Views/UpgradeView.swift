@@ -18,7 +18,6 @@ struct UpgradeView: View {
                     VStack(alignment: .leading, spacing: 12) {
                         featureRow("brain.head.profile", L("upgrade.feature.hardAI"))
                         featureRow("checkmark.seal", L("upgrade.feature.fairAI"))
-                        featureRow("infinity", L("upgrade.feature.unlimited"))
                     }
                     .padding(.horizontal, 30)
 
