@@ -323,3 +323,67 @@ session) `asc_finalize_sapxam.py`.
 ## Submitted for review (2026-08-09)
 
 All ASC steps complete: metadata, IAP, screenshots, build (VALID, Distribution-signed), age rating, App Privacy, IAP ticked into version. Submitted via reviewSubmissions API — reused the existing draft submission that already held the IAP (avoided the orphaned-draft trap), attached the version, and confirmed the IAP rode along (moved to WAITING_FOR_REVIEW alongside the version, not left behind). Verified independently via GET: `appStoreState: WAITING_FOR_REVIEW`.
+
+## Bugfix pass + resubmission attempt (2026-08-13) — BLOCKED on manual IAP tick-in
+
+While version 1.0 sat `WAITING_FOR_REVIEW`, a quality audit found and fixed two real bugs
+(commit `3acee88`):
+
+1. **Language switcher didn't apply live** — required an app relaunch. Fixed in
+   `SapXam/Core/Localization.swift`.
+2. **Paywall falsely advertised a free feature as Pro** — `UpgradeView` listed "unlimited
+   matches, no ads" as unlocked by the IAP when matches/ads were already free/absent.
+   Removed from the in-app UI/strings.
+
+A third issue was found in the IAP's own ASC metadata (not app code): the description
+advertised "card backs" (en-US) / "mẫu bài" (vi), a feature with zero implementation
+anywhere in the Swift codebase (grepped clean). Fixed directly via the API:
+
+- en-US: `"Unlock Hard AI, card backs, unlimited play"` → `"Unlock Hard AI, unlimited
+  play"` (30 chars)
+- vi: `"Mở khóa AI Khó, mẫu bài, chơi không giới hạn"` → `"Mở khóa AI Khó, chơi không giới
+  hạn"` (35 chars)
+
+Both verified live via a follow-up `GET /v2/inAppPurchases/6799402934/inAppPurchaseLocalizations`.
+Note: this PATCH 409'd (`ENTITY_ERROR.ATTRIBUTE.INVALID.UNMODIFIABLE`) while the IAP was
+still `WAITING_FOR_REVIEW` under the live submission — had to cancel the review submission
+first, then retry.
+
+**Version bump**: `project.yml` → `MARKETING_VERSION: "1.0.1"`, `CURRENT_PROJECT_VERSION:
+"2"`, `xcodegen generate` re-run. Clean simulator build reconfirmed
+(`** BUILD SUCCEEDED **`) before archiving.
+
+**Resubmission steps executed**:
+- Canceled the live review submission (`82ac7fb6-0e5b-4b9e-b33f-45cdfeb817b2`): `PATCH
+  {canceled:true}` → `CANCELING` → polled to `COMPLETE`. Note: the app version's
+  `appStoreState` came back as `DEVELOPER_REJECTED`, not `PREPARE_FOR_SUBMISSION` as
+  might be assumed — that's the real (editable) state Apple uses after a pre-review
+  cancellation, confirmed via GET.
+- `PATCH appStoreVersions/fbcdf4af-a73d-4984-8e30-d069f6706829` → `versionString: "1.0.1"`,
+  verified via GET.
+- Archived (`** ARCHIVE SUCCEEDED **`), exported (`** EXPORT SUCCEEDED **`), verified the
+  exported `.ipa`'s code signature by hand: `codesign -dvv` shows `Authority=Apple
+  Distribution: Quyen Ngo (SM99L22Q84)` (not Development). Uploaded via `altool` —
+  `UPLOAD SUCCEEDED`, Delivery UUID `e3efeed3-ab3d-4a5e-9f46-f946fbf10ccb`.
+- Polled `GET /v1/builds` until CFBundleVersion `2` (build id
+  `e3efeed3-ab3d-4a5e-9f46-f946fbf10ccb`) showed `processingState: VALID`.
+- Attached the build to the version: `PATCH .../relationships/build`, verified via
+  `GET ?include=build` — `relationships.build.data.id` matches.
+- Created a new `reviewSubmission` (id `edcc44a9-64a7-4e9e-8bdd-7e322e2031ce`, state
+  `READY_FOR_REVIEW`) and attached the app version via `reviewSubmissionItems`.
+
+**STOPPED before final submit — IAP did not ride along this time.** Unlike the 2026-08-09
+submission, the new draft submission's `items` list has only **1** item (the app version),
+not 2. Checked the authoritative signal per the known gotcha that the IAP's top-level
+`GET /v2/inAppPurchases/{id}` `state` field can look fine (`READY_TO_SUBMIT`) even when it
+is *not* actually attached: `GET /v2/inAppPurchases/6799402934/versions` shows the
+underlying `inAppPurchaseVersions` resource (id `8afbd0c4-37dd-4548-afd0-fd507b8072e3`)
+still sitting at `state: DEVELOPER_REJECTED` — i.e. genuinely not part of the new draft.
+
+**This needs a human action before it can be submitted**: open the *version* page (1.0.1,
+build 2) in the ASC web UI → "In-App Purchases and Subscriptions" section → tick the
+"Sập Xám Pro" IAP into the new draft review submission (do this from the version page, not
+the IAP's own page — the orphaned-draft trap noted elsewhere in this portfolio). Once
+ticked in, submit the review submission (`edcc44a9-64a7-4e9e-8bdd-7e322e2031ce` is left
+unsubmitted — `submittedDate: null`, state `READY_FOR_REVIEW` — ready for that final step
+once the IAP is attached).
