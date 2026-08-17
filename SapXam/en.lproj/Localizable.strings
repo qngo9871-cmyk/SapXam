@@ -8,6 +8,8 @@
 "home.howtoplay" = "How to Play";
 "home.rules" = "Full Rules";
 "home.upgrade" = "Unlock Hard AI →";
+"home.upgrade.trialended" = "Trial ended — unlock to keep playing →";
+"home.trialdays" = "Free trial — %d day(s) left";
 "home.noStakes" = "Fully offline. No coins, no forced tables, no login — play at your own pace.";
 
 "difficulty.easy" = "Easy";
@@ -88,6 +90,7 @@
 
 "upgrade.title" = "Sập Xám Pro";
 "upgrade.subtitle" = "Unlock the full experience.";
+"upgrade.subtitle.trialended" = "Your 7-day free trial has ended. Unlock Sập Xám Pro to keep playing.";
 "upgrade.feature.hardAI" = "Hard AI — deep search, foul-avoidance-first arrangement";
 "upgrade.feature.fairAI" = "Genuinely fair — deterministic AI, never rigged against you";
 "upgrade.owned" = "You own Sập Xám Pro ✓";

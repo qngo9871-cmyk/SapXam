@@ -10,13 +10,45 @@ class PurchaseManager: ObservableObject {
     @Published var productLoadFailed = false
     @Published var isPurchasing = false
     @Published var purchaseError: String?
+    @Published var trialActive = true
 
     private let productID = "com.quyenngo.sapxam.pro"
     private var transactionListener: Task<Void, Never>?
 
+    private let firstLaunchKey = "firstLaunchDate"
+    private let trialDuration: TimeInterval = 7 * 24 * 60 * 60
+
+    /// Days left in the 7-day free trial (0 once expired). Once it elapses,
+    /// every difficulty locks behind the paywall — there is no permanently
+    /// free tier.
+    var trialDaysRemaining: Int {
+        let defaults = UserDefaults.standard
+        guard let firstLaunch = defaults.object(forKey: firstLaunchKey) as? Date else { return 7 }
+        let remaining = trialDuration - Date().timeIntervalSince(firstLaunch)
+        return max(0, Int(ceil(remaining / (24 * 60 * 60))))
+    }
+
     init() {
         transactionListener = listenForTransactions()
+        evaluateTrialStatus()
         Task { await updateEntitlementStatus() }
+    }
+
+    /// Reads (or sets, on first-ever launch) the trial start date and
+    /// updates `trialActive`. Existing installs upgrading from a pre-trial
+    /// build have no stored date yet, so this starts their 7-day clock
+    /// rather than locking them out immediately.
+    func evaluateTrialStatus() {
+        let defaults = UserDefaults.standard
+        let now = Date()
+        let firstLaunch: Date
+        if let stored = defaults.object(forKey: firstLaunchKey) as? Date {
+            firstLaunch = stored
+        } else {
+            firstLaunch = now
+            defaults.set(now, forKey: firstLaunchKey)
+        }
+        trialActive = Date().timeIntervalSince(firstLaunch) < trialDuration
     }
 
     deinit { transactionListener?.cancel() }

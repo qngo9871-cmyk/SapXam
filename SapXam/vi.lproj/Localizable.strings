@@ -8,6 +8,8 @@
 "home.howtoplay" = "Hướng Dẫn";
 "home.rules" = "Luật Đầy Đủ";
 "home.upgrade" = "Mở khóa AI Khó →";
+"home.upgrade.trialended" = "Hết dùng thử — mở khóa để tiếp tục chơi →";
+"home.trialdays" = "Dùng thử miễn phí — còn %d ngày";
 "home.noStakes" = "Hoàn toàn ngoại tuyến. Không xu, không bàn cược ép buộc, không cần đăng nhập — chơi theo nhịp độ của bạn.";
 
 "difficulty.easy" = "Dễ";
@@ -88,6 +90,7 @@
 
 "upgrade.title" = "Sập Xám Pro";
 "upgrade.subtitle" = "Mở khóa trải nghiệm đầy đủ.";
+"upgrade.subtitle.trialended" = "Bản dùng thử 7 ngày đã hết. Mở khóa Sập Xám Pro để tiếp tục chơi.";
 "upgrade.feature.hardAI" = "AI Khó — tìm kiếm sâu, ưu tiên tránh bể chi";
 "upgrade.feature.fairAI" = "Công bằng thực sự — AI tất định, không bao giờ thiên vị";
 "upgrade.owned" = "Bạn đã sở hữu Sập Xám Pro ✓";

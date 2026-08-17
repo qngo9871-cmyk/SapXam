@@ -10,7 +10,9 @@ shedding game like Sâm Lốc, and shares no gameplay code with it. Bundle
 **Status: 🟢 App record created, full ASC metadata + IAP + pricing + screenshots pushed and
 verified live (2026-08-08). Blocked only on: uploading the real build, ticking the IAP into
 the version (web UI only), the App Privacy nutrition label, and actual submission — all
-human/web-UI steps. See "Live in ASC now" below for exact verified values.**
+human/web-UI steps. See "Live in ASC now" below for exact verified values. On top of the
+1.0.1 resubmission's IAP-tick-in blocker below, a 7-day-trial-then-full-paywall code change
+was implemented 2026-08-18 (NOT YET SUBMITTED — see dated section near the bottom).**
 
 ## What this is
 
@@ -387,3 +389,41 @@ the IAP's own page — the orphaned-draft trap noted elsewhere in this portfolio
 ticked in, submit the review submission (`edcc44a9-64a7-4e9e-8bdd-7e322e2031ce` is left
 unsubmitted — `submittedDate: null`, state `READY_FOR_REVIEW` — ready for that final step
 once the IAP is attached).
+
+## 7-day trial, then everything locks — no permanent free tier (2026-08-18)
+
+Portfolio-wide fix: ChineseChess (v1.0.6) and SamLoc both had real App Store downloads but
+**zero IAP purchases**, because their permanently-free tier (Easy/Normal AI, full rules) was
+a complete game for casual players — only Hard AI was ever gated, and nobody needed to pay
+to enjoy the app. SapXam had the identical shape: Easy + Normal AI, full rules, no ads, all
+free forever, with only Hard AI behind the one-time `com.quyenngo.sapxam.pro` IAP. Applying
+the same fix here before it accumulates the same zero-conversion history.
+
+**Before**: Easy + Normal AI free forever; only Hard AI gated behind IAP, no trial concept
+at all. **After**: a 7-day trial clock starts on first launch (`PurchaseManager.swift` —
+`trialActive`/`trialDaysRemaining` backed by a `firstLaunchDate` UserDefaults key, identical
+mechanism to SamLoc/ChineseChess). During the trial, Easy/Normal remain playable and Hard
+stays Pro-only as before. Once the trial expires, `HomeView.isLocked(_:)` locks **all three**
+difficulties for non-Pro users, not just Hard — no permanently-free tier survives expiry.
+Existing installs with no stored `firstLaunchDate` get the clock started by this update
+rather than being locked out immediately. `HomeView` gained trial-days-remaining text near
+the subtitle and a trial-ended footnote/upgrade-button copy switch; `UpgradeView`'s subtitle
+switches to trial-ended copy once expired. New localization keys (`home.trialdays`,
+`home.upgrade.trialended`, `upgrade.subtitle.trialended`) added to both `en.lproj` and
+`vi.lproj` `Localizable.strings`, hand-translated to match the existing Vietnamese tone.
+
+**DEBUG isPro double-gate**: verified, not re-touched. `updateEntitlementStatus()` already
+correctly double-gates its DEBUG auto-grant — it inspects `SX_CAPTURE`/`SX_SKIP_ONBOARDING`
+and forces `isPro = false` for the home/upgrade capture scenarios so App Store screenshots
+show the real locked/buy state, same fix already applied here during the 2026-08-08
+screenshot pass (see bug #2 above). No change needed.
+
+Build-verified: `xcodebuild -project SapXam.xcodeproj -scheme SapXam -destination
+'generic/platform=iOS' -configuration Debug build` → `** BUILD SUCCEEDED **`.
+
+**NOT YET SUBMITTED to the App Store.** This is a real product change for existing live
+users (version 1.0 is `WAITING_FOR_REVIEW`/pending the 1.0.1 IAP-tick-in blocker above) and
+is being held for the user's explicit go-ahead, staggered against the rest of the
+portfolio's same-pattern rollout to avoid Apple flagging a burst of near-identical
+submissions in a short window. No version bump, no `xcodegen generate`, no archive/export
+performed as part of this change.

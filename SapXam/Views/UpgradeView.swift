@@ -12,7 +12,7 @@ struct UpgradeView: View {
                 VStack(spacing: 22) {
                     Text("👑").font(.system(size: 50))
                     Text(L("upgrade.title")).font(.title.bold()).foregroundStyle(.white)
-                    Text(L("upgrade.subtitle")).font(.subheadline).foregroundStyle(.white.opacity(0.75))
+                    Text(L(purchases.isPro || purchases.trialActive ? "upgrade.subtitle" : "upgrade.subtitle.trialended")).font(.subheadline).foregroundStyle(.white.opacity(0.75))
                         .multilineTextAlignment(.center).padding(.horizontal, 30)
 
                     VStack(alignment: .leading, spacing: 12) {
