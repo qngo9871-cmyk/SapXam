@@ -12,7 +12,14 @@ verified live (2026-08-08). Blocked only on: uploading the real build, ticking t
 the version (web UI only), the App Privacy nutrition label, and actual submission — all
 human/web-UI steps. See "Live in ASC now" below for exact verified values. On top of the
 1.0.1 resubmission's IAP-tick-in blocker below, a 7-day-trial-then-full-paywall code change
-was implemented 2026-08-18 (NOT YET SUBMITTED — see dated section near the bottom).**
+was implemented 2026-08-18 (NOT YET SUBMITTED — see dated section near the bottom).
+Build **1.0.2 (3)** archived/exported/uploaded and processed to `VALID` 2026-08-18 — also
+NOT YET submitted, held for the user's go-ahead. Note: as of this pass, ASC shows version
+1.0.1 (id `fbcdf4af-a73d-4984-8e30-d069f6706829`) at `appStoreState: WAITING_FOR_REVIEW`,
+which differs from the "left unsubmitted, blocked on manual IAP tick-in" note in the
+2026-08-13 section below — it appears 1.0.1 was submitted at some point after that note was
+written. Not investigated or touched further this pass (out of scope — this pass only
+staged a new 1.0.2 build).**
 
 ## What this is
 
@@ -427,3 +434,16 @@ is being held for the user's explicit go-ahead, staggered against the rest of th
 portfolio's same-pattern rollout to avoid Apple flagging a burst of near-identical
 submissions in a short window. No version bump, no `xcodegen generate`, no archive/export
 performed as part of this change.
+
+## Build staged for resubmission (2026-08-18)
+
+Archived, exported, and uploaded a fresh Release build carrying the 7-day-trial-then-paywall
+change above. Bumped to **version 1.0.2, build 3** (`project.yml`, both project- and
+target-level blocks, regenerated via `xcodegen generate`) — chosen higher than both the
+local 1.0.1/2 and the highest `appStoreVersion` visible in ASC (1.0.1, id
+`fbcdf4af-a73d-4984-8e30-d069f6706829`) to avoid any version-number collision. Archive/
+export/upload all succeeded (`xcrun altool`, Delivery UUID
+`ada646a7-9ad5-435b-936e-99bf4c3ec793`); polled the ASC API and confirmed the build reached
+`processingState: VALID`. **Deliberately NOT done**: no new `appStoreVersion` created, no
+build attached to any version, no `reviewSubmission` touched — submission remains the
+user's explicit call.
