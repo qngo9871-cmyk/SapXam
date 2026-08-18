@@ -447,3 +447,18 @@ export/upload all succeeded (`xcrun altool`, Delivery UUID
 `processingState: VALID`. **Deliberately NOT done**: no new `appStoreVersion` created, no
 build attached to any version, no `reviewSubmission` touched — submission remains the
 user's explicit call.
+
+## Old submission canceled, new one drafted (2026-08-18, same day)
+
+At the user's explicit request: the old v1.0.1 `WAITING_FOR_REVIEW` submission (pre-trial-
+paywall code, build 2 — itself still pending the IAP-tick-in blocker noted above, so it was
+never going to ship correctly even if approved) was **CANCELED** via the API
+(`PATCH reviewSubmissions {"canceled": true}`, polled to `COMPLETE`). The freed version
+(`fbcdf4af-a73d-4984-8e30-d069f6706829`) was bumped in place to **1.0.2** and build 3
+(the trial-paywall build from the staging step above) attached — state now
+`PREPARE_FOR_SUBMISSION`. A new draft reviewSubmission `fdb435ff-7ca7-476f-8d96-5b5d7076450c`
+was created and the version item attached (`READY_FOR_REVIEW`) — **but NOT yet submitted.**
+This is still SapXam's first-ever release, so the Pro IAP (`com.quyenngo.sapxam.pro`, reset
+to `READY_TO_SUBMIT` by the cancellation) must be manually ticked into this version via the
+ASC web UI before submitting — confirmed via API testing that no relationship exists to
+attach an IAP to a reviewSubmission programmatically. **Do not submit without this step.**
