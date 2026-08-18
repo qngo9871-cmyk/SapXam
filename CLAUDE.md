@@ -7,19 +7,17 @@ structure) but **all game logic is net-new** — this is a poker-hand-arrangemen
 shedding game like Sâm Lốc, and shares no gameplay code with it. Bundle
 `com.quyenngo.sapxam`. Built 2026-08-08.
 
-**Status: 🟢 App record created, full ASC metadata + IAP + pricing + screenshots pushed and
-verified live (2026-08-08). Blocked only on: uploading the real build, ticking the IAP into
-the version (web UI only), the App Privacy nutrition label, and actual submission — all
-human/web-UI steps. See "Live in ASC now" below for exact verified values. On top of the
-1.0.1 resubmission's IAP-tick-in blocker below, a 7-day-trial-then-full-paywall code change
-was implemented 2026-08-18 (NOT YET SUBMITTED — see dated section near the bottom).
-Build **1.0.2 (3)** archived/exported/uploaded and processed to `VALID` 2026-08-18 — also
-NOT YET submitted, held for the user's go-ahead. Note: as of this pass, ASC shows version
-1.0.1 (id `fbcdf4af-a73d-4984-8e30-d069f6706829`) at `appStoreState: WAITING_FOR_REVIEW`,
-which differs from the "left unsubmitted, blocked on manual IAP tick-in" note in the
-2026-08-13 section below — it appears 1.0.1 was submitted at some point after that note was
-written. Not investigated or touched further this pass (out of scope — this pass only
-staged a new 1.0.2 build).**
+**Status: 🟢 2026-08-18 — v1.0.2 SUBMITTED, WAITING_FOR_REVIEW.** The old v1.0.1 submission
+(pre-trial-paywall code, itself still stuck on the IAP-tick-in blocker below) was CANCELED at
+the user's request; version bumped to 1.0.2 in place, build 3 (trial-paywall fix) attached,
+IAP (`com.quyenngo.sapxam.pro`) manually ticked into the version via the ASC web UI by the
+user, then submitted via the API (reviewSubmission `fdb435ff-7ca7-476f-8d96-5b5d7076450c`).
+Independently verified post-submit that **both** the version and the IAP moved to
+`WAITING_FOR_REVIEW` together — confirms the IAP genuinely rode with this submission, not the
+silent-drop failure mode that broke 6+ other apps in this portfolio before. Also fixed the
+IAP's own `reviewNote` metadata, which still claimed "exclusive card back designs" — a
+feature that was already removed from the app's UI copy in the 2026-08-13 pass below but
+never fixed in the IAP's own metadata.
 
 ## What this is
 
